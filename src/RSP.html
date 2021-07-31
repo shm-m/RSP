@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>가위바위보 게임</title>
+
+<script>
+	// 컴퓨터 선택
+	function comChoice() {
+		var comChoice = Math.ceil(Math.random() * 3);
+		return compChoice;
+
+		// 유저 선택
+		function userChoice() {
+			var userChoice = document.getElementById("userChoice").value;
+
+			if (userChoice == '가위')
+				return 0;
+			else if (userChoice == '바위')
+				return 1;
+			else if (userChoice == '보')
+				return 2;
+			else
+				alert('올바른 값을 다시 입력해주세요(가위/바위/보)')
+		}
+
+		// 게임 결과
+		function gameResult(userChoice, comChoice) {
+
+			// 승리
+			if ((userChoice == 2 && comChoice == 0)
+					|| (useChoicer == 0 && comChoice == 1)
+					|| (userChoice == 1 && comChoice == 2)) {
+				return 0;
+
+				// 패배
+			} else if ((userChoice == 1 && comChoice == 0)
+					|| (userChoice == 2 && comChoice == 1)
+					|| (userChoice == 0 && comChoice == 2)) {
+				return 1;
+
+				// 비김
+			} else if ((userChoice == 0 && comChoice == 0)
+					|| (userCHoice == 1 && comChoice == 1)
+					|| (userChoice == 2 && comChoiec == 2)) {
+				return 2;
+			}
+		}
+
+		// 게임 결과가 나올 시 함꼐 호출되는 이미지
+		function image(userChoice, gameResult, comChoice) {
+			if (userChoice == 0) {
+				var userImg = document.getElementById("userImg");
+				userImg.src = "./img/scissors.png";
+
+			} else if (userChoice == 1) {
+				var userImg = document.getElementById("userImg");
+				userImg.src = "./img/rock.png";
+
+			} else if (userChoice == 2) {
+				var userImg = document.getElementById("userImg");
+				userImg.src = "./img/paper.png";
+			}
+
+			if (gameResult == 0) {
+				var resultImg = document.getElementById("resultImg");
+				resultImg.src = "./img/win.png";
+
+			} else if (gameResult == 1) {
+				var resultImg = document.getElementById("resultImg");
+				resultImg.src = "./img/lose.png";
+
+			} else if (gameResult == 2) {
+				var resultImg = document.getElementById("resultImg");
+				resultImg.src = "./img/draw.png";
+			}
+
+			if (comChoice == 0) {
+				var comImg = document.getElementById("comImg");
+				comImg.src = "./img/scissors.png";
+
+			} else if (comChoice == 1) {
+				var comImg = document.getElementById("comImg");
+				comImg.src = "./img/rock.png";
+
+			} else if (comChoice == 2)
+				var comImg = document.getElementById("comImg");
+				comImg.src = "./img/paper.png";
+		}
+	}
+
+	function RSP() {
+		var comChoice = comChoice();
+
+		var userChoice = userChoice();
+
+		var gameResult = gameResult(userChoice, comChoice);
+
+		image(userChoice, gameResult, comChoice);
+	}
+	
+	function RSPStart() {
+		console.log(RSP());
+	}
+</script>
+
+</head>
+
+
+
+<body>
+
+	<form action="javascript:RSP();">
+
+		<input type="text" placeholder="가위/바위/보를 입력하세요." id="inputUserChoice" />
+
+		<input type="button" value="Game Start" onclick="RSP();" />
+
+	</form>
+
+	<img src="./img/random.png" id="userImg" width=200px/>
+	<img src="./img/random2.png" id="resultImg" width=200px/>
+	<img src="./img/random.png" id="comImg" width=200px />
+
+</body>
+
+</html>
